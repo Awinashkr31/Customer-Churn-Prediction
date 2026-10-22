@@ -1,0 +1,35 @@
+Dropped 11 rows with missing TotalCharges
+
+--- EDA summary ---
+Shape                 : 7032 rows x 20 columns
+Churned (1)           : 1869 customers
+Stayed  (0)           : 5163 customers
+Churn rate            : 26.58%
+Tenure (months)       : min 1, median 29.0, max 72
+MonthlyCharges (avg)  : churners 74.44 vs stayers 61.31
+Missing values total  : 0
+
+Train size: 5625 | Test size: 1407
+
+--- Model results (test set) ---
+Logistic Regression  acc=0.7257  prec=0.4901  rec=0.7968  f1=0.6069  roc_auc=0.8351
+Random Forest        acc=0.7626  prec=0.5455  rec=0.6417  f1=0.5897  roc_auc=0.8139
+XGBoost              acc=0.7413  prec=0.5095  rec=0.7193  f1=0.5965  roc_auc=0.8190
+
+Best model by F1-score: Logistic Regression (F1 = 0.6069)
+Confusion matrix [[TN, FP], [FN, TP]]: [[723, 310], [76, 298]]
+
+Top 10 Random Forest features:
+  num__TotalCharges                             0.1412
+  num__tenure                                   0.1326
+  num__MonthlyCharges                           0.1219
+  cat__Contract_Month-to-month                  0.0751
+  cat__OnlineSecurity_No                        0.0371
+  cat__Contract_Two year                        0.0362
+  cat__TechSupport_No                           0.0303
+  cat__PaymentMethod_Electronic check           0.0283
+  cat__InternetService_Fiber optic              0.0271
+  cat__OnlineBackup_No                          0.0169
+
+Saved metrics -> results/metrics.json
+Saved best model (Logistic Regression) -> models/best_churn_model.pkl
